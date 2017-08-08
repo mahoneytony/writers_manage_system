@@ -1,0 +1,2 @@
+This application is aimed to organize and simplify a workflow of copywriters.
+The main roles is administrator, writer and controller. Administrator can create and edit orders, set a writer to order or find writers by the way of creating tender. Writer can upload file of done order, leave some comment for contoller or read comments from administrator or controller. Also writer can monitor tenders for some new work. Principal duties of controller is checkin of the writers work, reading and leaving comments about mistakes or approving valid orders.
