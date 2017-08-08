@@ -1,0 +1,259 @@
+
+<html>
+<head>
+	<title>Create new order</title>
+	<style type="text/css">
+	body { 
+		color: white;
+		background-color: grey;
+	}
+
+
+	/* HEADER */
+	.header_container {
+		margin-top: -18px;
+		
+	}
+
+	#balance_table {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 200px;
+		height: 200px;
+		background-color: transparent;
+		border-right: 2px solid white;
+		
+	}
+
+	#how_to_earn_more {
+		position: absolute;
+		top: 0;
+		left: 300;
+		width: 380px;
+		height: 200px;
+		background-color: transparent;
+		
+	}
+
+	#how_to_earn_more p{
+		padding-top: 75px;
+		padding-left: 50px;
+	}
+
+	#skills_salary {
+		position: absolute;
+		top: 0;
+		left: 600;
+		width: 380px;
+		height: 200px;
+		background-color: transparent;
+	}
+	#rating_tarif_table {
+		position: absolute;
+		top: 0;
+		left: 900;
+		width: 380px;
+		height: 200px;
+		background-color: transparent;
+	}
+
+	/* MAIN */
+
+	#my_orders {
+		position: absolute;
+		top: 200px;
+		left: 0px;
+		height: 1500px;
+		width: 380px;
+		background-color: transparent;
+
+	}
+
+	.side_menu li {
+		width: 200px;
+		list-style: none;
+		text-align: left;
+		margin-top: 0px;
+		margin-bottom: 0px;
+		padding-top: 20px;
+		padding-bottom: 20px;
+		padding-left: 20px;
+		border-right: 2px solid white;
+		opacity: 0.5;
+
+	}
+
+	.side_menu li:hover {
+	opacity: 0.5;
+	background-color: grey;
+	border: 2px solid white;
+	}
+
+	.side_menu a {
+		opacity: 0,5;
+		width: 100%;
+		height: 100%;
+		color: white;
+		font: 22px latha;
+		text-decoration: none;
+
+	}
+
+	#main_part {
+		position: absolute;
+		top: 200px;
+		left: 300px;
+		height: 1500px;
+		width: 700px;
+		background-color: transparent;
+		float: right;
+		font: 15px latha;
+		text-decoration: none;
+	}
+
+	#shedule {
+		position: absolute;
+		top: 200px;
+		left: 1000px;
+		height: 1500px;
+		width: 300px;
+		background-color: transparent;
+	}
+
+	#details {
+		width: 600;
+		height: 90;
+	}
+
+
+	#create_order {
+		position: absolute;
+		top: 1560;
+		left: 300;
+	}
+	
+	img {
+		width: 20px;
+		height: 20px;
+		margin-right: 10px; 
+	}
+			/* FOOTER */
+
+	.footer_container {
+		position: absolute;
+		top: 1700px;
+		left: 0px;
+		width: 100%;
+		background-color: transparent;
+		height: 100px;
+	}
+	</style>
+</head>
+<body>
+	<header>
+		
+		<div class='header_container'>
+
+			<div id='balance_table'>
+				<p>Balance table</p>
+			</div>
+
+			<div id='how_to_earn_more'>
+				<p>Here answers how to earn more</p>
+			</div>
+
+			<div id= 'rating_tarif_table'>
+			</div>
+
+			<div id='skills_salary'>
+			</div>
+
+			
+
+		</div>
+	</header>
+
+	<main>
+		<div class='main_container'>
+			<div id='my_orders'>
+				<ul class='side_menu'>
+
+					<li><a href="http://127.0.0.1:8000/to_apply_order_list/">To apply</a></li>
+					<li><a href="http://127.0.0.1:8000/personal/"><img src="waiting.svg">profile</a></li>
+					<li><a href="http://127.0.0.1:8000/available_orders/"><img src="drag.svg">available orders</a></li>
+					<li><a href="http://127.0.0.1:8000/for_check/"><img src="pointer.svg">or check</a></li>
+					<li><a href="#"><img src="question-mark-cursor.svg">help desk</a></li>
+				</ul>
+			</div>
+
+			<div id='main_part'>
+
+				<form action='http://127.0.0.1:8000/done/' method='post' id='correction_form'>
+				{% csrf_token %}
+				<p>Order number:<input type='text' name='number' value='{{order}}'></p>
+				<p>Account: <input type='text' name='account' value='{{account}}'></p>
+				<p>Files: <input type='text' name='files' value='{{files}}'></p>	
+				<p>Subject: <input type='text' name='subject' value='{{subject}}'></p>
+				<p>Topic: <input type='text' name='topic' value='{{topic}}'></p>
+				<p>Deadline: <input type='text' name='client_deadline' value='{{deadline}}'></p>
+				<p>Price: <input type='text' name='price' value='{{price}}'></p>
+				<p>Pages: <input type='text' name='number_of_pages' value='{{pages}}'></p>
+				<p>Spaced: <input type='text' name='spaced' value='{{spaced}}'></p>
+				<p>Format: <input type='text' name='format' value='{{format}}'></p>
+				<p>Sources: <input type='text' name='number_of_sources' value='{{sources}}'></p>
+				<p>Abstract:<input type='text' name='abstract' value='{{abstract}}'></p>
+				<p>Slieds: <input type='text' name='slieds' value='{{slieds}}'></p>
+				<p>Questions: <input type='text' name='questions' value='{{questions}}'></p>
+				<p>Problems: <input type='text' name='problems' value=' {{problems}}'></p>
+				<p>Paper type: <input type='text' name='paper_type' value='{{paper_type}}'></p>
+				<p>Assign date: <input type='text' name='assign_date' value='{{assign_date}}'></p>
+				<p>Deadline time real: <input type='text' name='real_time_deadline' value=' {{deadline_time_real}}'></p>
+				<p>Status: <input type='text' name='status'></p>
+				<p>Writers DL: <input type='text' name='writer_deadline' value='{{writers_DL}}'></p>
+				<p>Writer time: <input type='text' name='writer_time' value='{{writer_time}}'></p>
+				<p>Writer number: <input type='text' name='writer_number' value='{{writer_num}}'></p>
+				<p>Words min: <input type='text' name='words_min' value='{{words_min}}'></p>
+
+				<p> Writer: 
+				<SELECT NAME="bev">
+				{% for writer in writers %}
+				<option value="-">{{writer.username}}
+				{% endfor %}
+				</SELECT>
+				</p>
+
+				<p>Email: <input type='text' name='writer_email' value=' {{email}}'></p>
+				<p>Send date: <input type='text' name='send_date' value=' {{send_date}}'></p>
+				<p>Payment: <input type='text' name='payment' value=' {{payment}}'></p>
+				<p>Payment date: <input type='text' name='payment_date' value=' {{payment_date}}'></p>
+				<p>File: <input type='text' value=' {{file}}'></p>
+				<p>Name: <input type='text' value=' {{name}}'></p>
+				<p>Client: <input type='text' name='client_num_of_order' value=' {{client}}'></p>
+				
+
+				<p>Details:<p>
+				<textarea id='details' name='details' id='details_area'></textarea>
+
+
+
+
+				<input type='submit' value='Create order' id='create_order'>
+				</form>
+			</div>
+
+			<div id='shedule'>
+			</div>
+		</div>
+	</main>
+
+	<footer>
+		<div class= 'footer_container'>
+			<p>footer@ all rights reserver</p>
+		</div>
+	</footer>
+
+</body>
+</html>
+
+

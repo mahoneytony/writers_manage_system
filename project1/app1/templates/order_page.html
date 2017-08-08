@@ -1,0 +1,821 @@
+
+<html>
+<head>
+	<title>Order {{order.number}}</title>
+	<style type="text/css">
+
+	/* HEADER */
+	body {
+		background-image: url(http://imagesbase.ru/uploads/posts/2014-12/1419774374_imagesbase.ru-971.jpg);
+	}
+
+	.header_container {
+	
+		
+		height: 200px;
+		width: 100%;
+		margin-left: -10px;
+		margin-right: -100px;
+	}
+
+
+	/* MAIN */
+
+	#my_orders {
+		position: absolute;
+		top: 200px;
+		left: 0px;
+		height: 600px;
+		width: 300px;
+		
+	}
+
+	.side_menu li {
+		width: 200px;
+		list-style: none;
+		text-align: left;
+		margin-top: 0px;
+		margin-bottom: 0px;
+		padding-top: 20px;
+		padding-bottom: 20px;
+		padding-left: 10px;
+	}
+
+	.side_menu li:hover {
+		background-color: white;
+	}
+
+	.side_menu a {
+		width: 100%;
+		height: 100%;
+	}
+
+	#main_part {
+		position: absolute;
+		top: 200px;
+		left: 300px;
+		
+		width: 963px;
+		background-color: #B4A3A3;
+		float: right;
+
+	}
+
+	
+
+	#order_number {
+		position: absolute;
+		left: 0px;
+		top: 0px;
+		width: 150px;
+		padding: 20px;
+		
+	}
+
+	#deadline {
+		position: absolute;
+		top: 0px;
+		left: 200px;
+		width: 150px;
+		padding: 20px;
+		
+	}
+
+	#hours_left {
+		position: absolute;
+		top: 0px;
+		left: 400px;
+		width: 150px;
+		padding: 20px;
+		
+	}
+
+	#order_info {
+		position: absolute;
+		top: 100px;
+		
+		width: 100%;
+	}
+
+	#order_info th, td {
+		padding-left: 10px;
+		padding-right: 10px;
+		border: 1px;
+		
+	}
+
+	#subject {
+		position: absolute;
+		top: 170px;
+		background-color: #75D8DD;
+		padding-left: 10px;
+		padding-right: 10px;
+	}
+	#topic {
+		position: absolute;
+		top: 220px;
+		background-color: #4DBDC3;
+		padding-left: 10px;
+		padding-right: 10px;
+
+		}
+
+	#details {
+		position: absolute;
+		top: 290px;
+		left: 20px;
+		right: 20px;
+		bottom: 20px;
+		opacity: 0.7;
+		height:200px;
+	}
+
+	#details_field {
+		position: absolute;
+		background-color: #B6DE72;
+		top: 40px;
+		left: 0px;
+		right: 0px;
+		bottom: 0pc;
+	}
+
+
+
+	#apply {
+		position: absolute;
+		top: 270px;
+		right: 100px;
+	}
+
+	#send_order {
+		margin-top: 20px;
+		margin-left: 30px;
+	}
+
+	#add_order_file_container {
+		position: absolute;
+		top: 0px;
+		background-color: #C2D8DE;
+		height: 60px;
+		width: 100%;
+		border-bottom: solid 1px black;
+		
+		
+	}
+
+	.messages_and_files_display_container {
+		width: 930px;
+		min-height: 400px;
+		background-color: #91BDC8;
+		
+		position: absolute;
+		top: 500px;
+		left: 20px;
+		margin-bottom: 50px;
+	}
+
+	.messages_container{
+		position: absolute;
+		left: 20px;
+		top: 40px;
+		width: 500px;
+		min-height: 250px;
+		background-color: #EAAE91;
+		border: 1px solid black;
+
+		
+	}
+	.files_container {
+		position: absolute;
+		left: 540px;
+		top: 40px;
+		width: 360px;
+		min-height: 250px;
+		background-color: #EAAE91;
+		border: 1px solid black;
+
+	}
+
+	#messages_par {
+		position: absolute;
+		top: 5px;
+		left: 20px;
+	}
+	
+	#files_par {
+		position: absolute;
+		top: 5px;
+		left: 540px;
+	}
+
+	#comment_form_container {
+		position: absolute;
+		width: 100%;
+		height: 200px;
+		background-color: #ED8857;
+	}
+
+	#send_button {
+		position: absolute;
+		bottom: 5px;
+		left: 250px;
+	}
+
+	#comment_place {
+		position: absolute;
+		top: 5px;
+		left: 5px;
+		width: 488px;
+		height: 165px;
+		background-color: #C2D8DE;
+
+	}
+
+	.comments_display_container {
+		position: absolute;
+		top: 205px;
+		left: 8px;
+		width: 488px;
+		
+	}
+
+	.file_link_display_container {
+		position: absolute;
+		top: 70px;
+		left: 8px;
+		width: 345px;
+		
+	}
+
+	.file_link_display_one {
+		background-color: #C2D8DE;
+		border: 1px solid black;
+		padding-left: 3px;
+		margin-top: 3px;
+	}
+
+
+	.comment_display_one {
+		background-color: #C2D8DE;
+		border: 1px solid black;
+		padding-left: 3px;
+		margin-top: 3px;
+	}
+
+
+	#final_file_upload_container {
+		height: 100px;
+		width: 400px;
+		background-color: white;
+		position: absolute;
+		top: 200px;
+		right: 50px;
+	}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	#on_check_container {
+		position: absolute;
+		width: 200px;
+		height: 50px;
+		background-color: red;
+
+	}
+
+	#for_check_container {
+		position: absolute;
+		top: 500px;
+		right: 100px;
+		background-color: #57969B;
+		height: 60px;
+		width: 350px;
+		border: solid 1px black;
+		border-radius: 5px;
+	}
+
+	#for_check_container button {
+		margin-top: 15px;
+		margin-left: 18px;
+		width: 140px;
+		height: 30px;
+		border-radius: 3px;
+	}
+
+	#download_link {
+		position: absolute;
+		top: 400px;
+		right: 100px;
+		height: 40px;
+		width: 160px;
+		background-color: #D8981F;
+		border: solid 2px black;
+		border-radius: 2px;
+	}
+
+	#download_link a {
+		width: 100%;
+		width :100%;
+		color: #FF0000;
+		font-size: 27px;
+		margin-left: 40px;
+	}
+
+	#pre_check_container {
+		position: absolute;
+		right: 100px;
+		top: 490px;
+		height: 130px;
+		background-color: #767676;
+		width: 400px;
+	}
+
+	#comment_area {
+		margin-top: 20px;
+		margin-left: 20px;
+		width: 300px;
+		height: 50px;
+	}
+
+	#precheck {
+		position: absolute;
+		right: 10px;
+		top: 270px;
+		height: 300px;
+		background-color: #767676;
+		width: 680px;
+	}
+
+	.comments_for_writer {
+		position: absolute;
+		top: 275px;
+		left: 10px;
+		width: 650px;
+		height: 200px;
+		background-color: yellow;
+	}
+
+	.comments_for_writer p {
+		background-color: #B28003; 
+		height: 30px;
+		margin-left: 10px;
+		margin-right: 10px;
+		border-radius: 5px;
+		margin-top: 2px;
+		margin-bottom: 2px;
+
+	}
+
+	#controller_comment {
+		position: absolute;
+		right: 10px;
+		top: 580px;
+		height: 100px;
+		background-color: #E5D09B;
+		width: 680px;
+	}
+
+	#correctors_decision {
+		position: absolute;
+		background-color: green;
+		height: 60px;
+		width: 200px;
+		top:150px;
+		left: 600px;
+	}
+
+	#take_for_check_button {
+		position: absolute;
+		background-color: green;
+		top:150px;
+		left: 600px;
+
+	}
+
+	#final_file_download_container {
+		position: absolute;
+		background-color: red;
+		height: 60px;
+		width: 300px;
+		top: 250px;
+		left: 600px;
+	}
+
+	#final_file_download_container a {
+		position: absolute;
+		top: 20px;
+		left: 20px;
+		width: 160px;
+		height: 30px;
+		background-color: grey;
+		text-align: center;
+	}
+
+	#returned_for_revision_container {
+		position: absolute;
+		top: 20px;
+		left: 600px;
+		width: 160px;
+		height: 70px;
+		background-color: grey;
+		text-align: center;
+	}
+			/* FOOTER */
+
+	
+	</style>
+</head>
+<body>
+<div class='header_container'></div>
+	<main>
+		<div class='main_container'>
+			<div id='my_orders'>
+				<ul class='side_menu'>
+					<li><a href="http://127.0.0.1:8000/personal_cabinet/">Personal cab.</a></li>
+					<li><a href="http://127.0.0.1:8000/available_orders/">Available orders</a></li>
+					<li><a href="http://127.0.0.1:8000/">Main</a></li>
+				</ul>
+			</div>
+
+			<div id='main_part'>
+				<div id='order_number'>
+					<p>Order #: {{order.number}}</p>
+				</div>
+				<div id='deadline'>
+					<p>Deadline: {{order.client_deadline}}</p>
+				</div>
+				<div id='hours_left'>
+					<p>Hours left: 36</p>
+				</div>
+				<div id='order_info'>
+					
+					<table class='order_table'>
+
+					<caption>Order information</caption>
+
+
+					<thead>
+						<tr>
+						<th>Format</th>
+						<th>Pages</th>
+						<th>Sources</th>
+						<th>Words min.</th>
+						<th>Paper type</th>
+						<th>Abstract</th>
+						</tr>
+					</thead>
+					
+					
+					<tbody>
+						
+						<tr>
+							<td>{{order.format}}</td>
+							<td>{{order.number_of_pages}}</td>
+							<td>{{order.number_of_sources}}</td>
+							<td>{{order.words_min}}</td>
+							<td>{{order.paper_type}}</td>
+							<td>{{order.abstract}}</td>	
+						</tr>
+						
+					</tbody>
+					
+				</table>
+				</div>
+				<div id='subject'>
+					<p>Subject: {{order.subject}}</p>
+				</div>
+
+				<div id='topic'>
+					<p>Topic: {{order.topic}}</p>
+				</div>
+				<div id='details'>
+					<p>Details:</p>
+					<div id='details_field'>
+					</div>
+				</div>
+
+				{% if status_available %}
+
+
+				<form id='apply' method='post' action=''>
+					{%csrf_token%}
+					<input type='hidden' name='order_num' value='{{order.number}}'>
+					<button  formmethod='post' formaction='http://127.0.0.1:8000/apply_order/'>APPLY order</button>
+				</form>
+				<div class='messages_and_files_display_container'>
+					<p id='messages_par' >Messages:</p>
+					<div class='messages_container'>
+
+
+						<div id='comment_form_container'>
+							<form id='comment_form' method="post" action='http://127.0.0.1:8000/create_message/'>
+							{% csrf_token %}
+								<input type='hidden' name='order_num' value='{{order.number}}'>
+								<textarea id='comment_place'  name='comment' rows="20" cols="63" palceholder='Tap your comment here...'></textarea>
+								<input id='send_button' type='submit' value='Send'>
+							</form>
+						</div>
+
+
+						{% if comments %}
+						<div class='comments_display_container' >
+							{% for comment in comments %}
+								<div class='comment_display_one'>
+
+
+										<p>{{comment.order.writer.username}}  <font size="2">{{comment.create_date}}</font></p
+										<p><font size="2">{{comment.text}}</font></p>
+
+
+								</div>
+							{% endfor %}
+						</div>
+						{% endif %}
+					</div>
+					<p id='files_par'>Files:</p>
+					<div class='files_container'>
+						<div id='add_order_file_container'>
+							<form id='send_order' enctype="multipart/form-data" method="post" action='http://127.0.0.1:8000/add_file_to_order/'>
+								{%csrf_token%}
+								<input type='hidden' name='order_num' value='{{order.number}}'>
+								<input type="file" name="order_file">
+								<input type="submit" value="Send">
+							</form>
+						</div>
+						
+						{% if files_list %}
+						<div class='file_link_display_container' >
+							{% for file in files_list %}
+								<div class='file_link_display_one'>
+
+
+										<p>{{file.order.writer.username}}  <font size="2">{{file.create_date}}</font></p
+										<p><font size="2"><a href='{{file.order_file.url}}'>{{file.order_file.name}}</a></font></p>
+
+
+								</div>
+							{% endfor %}
+						</div>
+						{% endif %}
+					
+					</div>
+				</div>
+
+				{% endif %}
+
+				{% if status_in_progress %}
+
+				<div id='final_file_upload_container'>
+					<p>Upload final file:</p>
+					<form id='send_final_file' enctype="multipart/form-data" method="post" action='http://127.0.0.1:8000/add_final_file_to_order/'>
+						{% csrf_token %}
+						<input type='hidden' name='order_num' value='{{order.number}}'>
+						<input type='file' name='order_file'>
+						<input type='submit' value='Send final file'>
+					</form>
+				</div>
+				
+				<div class='messages_and_files_display_container'>
+					<p id='messages_par' >Messages:</p>
+					<div class='messages_container'>
+
+
+						<div id='comment_form_container'>
+							<form id='comment_form' method="post" action='http://127.0.0.1:8000/create_message/'>
+							{% csrf_token %}
+								<input type='hidden' name='order_num' value='{{order.number}}'>
+								<textarea id='comment_place'  name='comment' rows="20" cols="63" palceholder='Tap your comment here...'></textarea>
+								<input id='send_button' type='submit' value='Send'>
+							</form>
+						</div>
+
+
+						{% if comments %}
+						<div class='comments_display_container' >
+							{% for comment in comments %}
+								<div class='comment_display_one'>
+
+
+										<p>{{comment.order.writer.username}}  <font size="2">{{comment.create_date}}</font></p
+										<p><font size="2">{{comment.text}}</font></p>
+
+
+								</div>
+							{% endfor %}
+						</div>
+						{% endif %}
+					</div>
+					<p id='files_par'>Files:</p>
+					<div class='files_container'>
+						<div id='add_order_file_container'>
+							<form id='send_order' enctype="multipart/form-data" method="post" action='http://127.0.0.1:8000/add_file_to_order/'>
+								{%csrf_token%}
+								<input type='hidden' name='order_num' value='{{order.number}}'>
+								<input type="file" name="order_file">
+								<input type="submit" value="Send">
+							</form>
+						</div>
+						
+						{% if files_list %}
+						<div class='file_link_display_container' >
+							{% for file in files_list %}
+								<div class='file_link_display_one'>
+
+
+										<p>{{file.order.writer.username}}  <font size="2">{{file.create_date}}</font></p
+										<p><font size="2"><a href='{{file.order_file.url}}'>{{file.order_file.name}}</a></font></p>
+
+
+								</div>
+							{% endfor %}
+						</div>
+						{% endif %}
+					
+					</div>
+				</div>
+				
+				{% endif %}
+
+
+				{% if status_returned_for_revision %}
+
+					<div id='returned_for_revision_container'>
+						<h3>Returned for revision</h3>
+					</div>
+
+					<div id='final_file_upload_container'>
+					<p>Upload final file:</p>
+					<form id='send_final_file' enctype="multipart/form-data" method="post" action='http://127.0.0.1:8000/add_final_file_to_order/'>
+						{% csrf_token %}
+						<input type='hidden' name='order_num' value='{{order.number}}'>
+						<input type='file' name='order_file'>
+						<input type='submit' value='Send final file'>
+					</form>
+				</div>
+				
+				<div class='messages_and_files_display_container'>
+					<p id='messages_par' >Messages:</p>
+					<div class='messages_container'>
+
+
+						<div id='comment_form_container'>
+							<form id='comment_form' method="post" action='http://127.0.0.1:8000/create_message/'>
+							{% csrf_token %}
+								<input type='hidden' name='order_num' value='{{order.number}}'>
+								<textarea id='comment_place'  name='comment' rows="20" cols="63" palceholder='Tap your comment here...'></textarea>
+								<input id='send_button' type='submit' value='Send'>
+							</form>
+						</div>
+
+
+						{% if comments %}
+						<div class='comments_display_container' >
+							{% for comment in comments %}
+								<div class='comment_display_one'>
+
+
+										<p>{{comment.order.writer.username}}  <font size="2">{{comment.create_date}}</font></p
+										<p><font size="2">{{comment.text}}</font></p>
+
+
+								</div>
+							{% endfor %}
+						</div>
+						{% endif %}
+					</div>
+					<p id='files_par'>Files:</p>
+					<div class='files_container'>
+						<div id='add_order_file_container'>
+							<form id='send_order' enctype="multipart/form-data" method="post" action='http://127.0.0.1:8000/add_file_to_order/'>
+								{%csrf_token%}
+								<input type='hidden' name='order_num' value='{{order.number}}'>
+								<input type="file" name="order_file">
+								<input type="submit" value="Send">
+							</form>
+						</div>
+						
+						{% if files_list %}
+						<div class='file_link_display_container' >
+							{% for file in files_list %}
+								<div class='file_link_display_one'>
+
+
+										<p>{{file.order.writer.username}}  <font size="2">{{file.create_date}}</font></p
+										<p><font size="2"><a href='{{file.order_file.url}}'>{{file.order_file.name}}</a></font></p>
+
+
+								</div>
+							{% endfor %}
+						</div>
+						{% endif %}
+					
+					</div>
+				</div>
+
+				{% endif %}
+
+
+				{% if status_on_checking %}
+					<div id='on_check_container'>
+						<h2>ON CHECK</h2>
+					</div>
+
+					<div id='take_for_check_button'>
+						<form action='http://127.0.0.1:8000/take_for_check/' method='post'>
+							{% csrf_token %}
+							<input type='hidden' value='{{order.number}}' name='order_num'>
+							<input type='submit' value='Take for check'>
+						</form>
+					</div>
+
+					
+						{% endif %}
+
+						{% if status_on_checking_with_controller %}
+						<div id='final_file_download_container'>
+							<a href='{{final_file.order_file.url}}'>Final file</a>
+						</div>
+
+						<div id='correctors_decision'>
+							<form method='post'>
+							{% csrf_token %}
+								<button formaction='http://127.0.0.1:8000/results_of_checking/' value='set_as_done{{order.number}}' name='result_of_checking'>Approve</button>
+								<button formaction='http://127.0.0.1:8000/results_of_checking/' value='return_to_writer{{order.number}}' name='result_of_checking'>Return for revision</button>
+							</form>
+						</div>
+
+						<div class='messages_and_files_display_container'>
+							<p id='messages_par' >Messages:</p>
+							<div class='messages_container'>
+								<div id='comment_form_container'>
+									<form id='comment_form' method="post" action='http://127.0.0.1:8000/create_message/'>
+									{% csrf_token %}
+										<input type='hidden' name='order_num' value='{{order.number}}'>
+										<textarea id='comment_place'  name='comment' rows="20" cols="63" palceholder='Tap your comment here...'></textarea>
+										<input id='send_button' type='submit' value='Send'>
+									</form>
+								</div>
+								{% if comments %}
+								<div class='comments_display_container' >
+								{% for comment in comments %}
+									<div class='comment_display_one'>
+										<p>{{comment.order.writer.username}}  <font size="2">{{comment.create_date}}</font></p>
+										<p><font size="2">{{comment.text}}</font></p>
+									</div>
+								{% endfor %}
+								</div>
+								{% endif %}
+							</div>
+
+							<p id='files_par'>Files:</p>
+
+							<div class='files_container'>
+								<div id='add_order_file_container'>
+									<form id='send_order' enctype="multipart/form-data" method="post" action='http://127.0.0.1:8000/add_file_to_order/'>
+									{%csrf_token%}
+										<input type='hidden' name='order_num' value='{{order.number}}'>
+										<input type="file" name="order_file">
+										<input type="submit" value="Send">
+									</form>
+								</div>
+											
+								{% if files_list %}
+								<div class='file_link_display_container' >
+								{% for file in files_list %}
+									<div class='file_link_display_one'>
+										<p>{{file.order.writer.username}}  <font size="2">{{file.create_date}}</font></p>
+										<p><font size="2"><a href='{{file.order_file.url}}'>{{file.order_file.name}}</a></font></p>
+									</div>
+								{% endfor %}
+								</div>
+								{% endif %}
+							</div>
+						</div>
+						{% endif %}
+					</div>
+				</div>
+
+			
+
+				
+
+			</div>
+
+		</div>
+	</main>
+
+
+</body>
+</html>
+
+

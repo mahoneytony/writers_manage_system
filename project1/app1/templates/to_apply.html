@@ -1,0 +1,170 @@
+<html>	
+	<head>
+		<title>To apply</title>
+		<style type="text/css">
+
+		header {
+			position: absolute;
+			height: 200px;
+			top: 0px;
+			left: 0px;
+			width: 100%;
+			background-color: #D5492A;
+		}
+/*
+		#main_container {
+			background-color: #A5DDD3;
+			position: absolute;
+			top: 200px;
+			left: 0px;
+			width: 100%;
+			height: 800px;
+			font-family: verdana;
+		}
+*/
+		#opas {
+			background-color: #7CA9A1;
+			
+			position: absolute;
+			top: 220px;
+			bottom: 20px;
+			left: 20px;
+			right: 20px;
+			border-radius: 20px;
+		}
+
+
+		.order_table th {
+		padding-left: 30px;
+		}
+
+		.order_table td {
+		padding-left: 30px;
+		}
+
+		.order_table { 
+			background-color: #A5DDD3;
+			position: absolute;
+			top: 30px;
+			left: 30px;
+
+
+		}
+
+		.order_frame {
+			margin-top: 10px;
+			border-radius: 15px;
+			margin-right: 10px;
+			margin-left: 10px;
+			height: 60px;
+			background-color: #CD9089;
+			
+		}
+
+		.order_number {
+			margin-left: 20px;
+			float: left;
+
+		}
+
+		.order_subject {
+			margin-left: 100px;
+			float: left;
+		}
+
+		.order_topic {
+			margin-left: 150px;
+			float: left;
+		}
+
+		.send_button {
+			margin-left: 20px;
+			margin-top: 10px;
+			float: left;
+		}
+
+		.writers_select {
+			margin-left: 100px;
+			width: 200px;
+			margin-top: 10px;
+		}
+
+		.writers {
+			margin-left: 50px;
+			float: left;
+		}
+
+		#foooter {
+			position: absolute;
+			top: 10px;
+			right: 20px;
+			font-size: 30px;
+			color: white;
+			font-family: verdana;
+		}
+
+		#main_link {
+			position: absolute;
+			top: 30px;
+			right: 20px;
+			font-size: 30px;
+			color: white;
+			font-family: verdana;
+		}
+		#footer h1 {
+			font-size: 30px;
+			color: white;
+		}
+/*
+		footer {
+			background-color: #D5492A;
+			position: absolute;
+			height: 150px;
+			bottom: 0px;
+			left: 0px;
+			width: 100%;
+
+		}
+*/
+		</style>
+	</head>
+	<body>
+
+		<header>
+			<div id='foooter'>
+				<h1>to apply</h1>
+				<a id='main_link' href="http://127.0.0.1:8000/">MAIN</a>
+			<div>
+
+		</header>
+		
+		
+		<div id='main_container'>
+			
+			<div id='opas'>
+				{% for tender in tenders %}
+				
+					<div class='order_frame'>
+						<p class='order_number'>{{tender.order.number}}</p>
+						<p class='order_subject'>{{tender.order.subject}}</p>
+						<p class='order_topic'>{{tender.order.topic}}</p>
+						<form method='post' action='http://127.0.0.1:8000/set_writer/'>
+						{% csrf_token %}
+						<select class='writers_select' name='values'>
+						{% for writer in tender.writers_list %}
+								<option   value='{{writer.id}}//{{tender.order.number}}'>{{writer.username}}</option>
+							
+						{% endfor %}
+						</select>
+						<input class='send_button' type='submit' value='SELECT'>
+						</form>
+					</div>
+				{% endfor %}
+			</div>
+		</div>
+		
+		<footer>
+		</footer>
+
+	</body>
+</html>

@@ -1,0 +1,144 @@
+<html>
+<head>
+	<title>Personal cabinet</title>
+	<style>
+
+#orders_container {
+	width: 1200px;
+	background-color: #CFD8E3;
+}
+
+.in_progress_orders_container, .returned_for_revision_orders_container, .submitted_orders_container  {
+	margin-bottom: 3px;
+	border: 1px solid black;
+}
+
+	</style>
+</head>
+<body>
+	<div style='position: absolute; top:20px; right:40px;'>
+		<p style='font-size: 30px;'>Hello {{user.username}}</p>
+	</div>
+	<ul style='background-color: #F2B283; width:300px;'>
+		<li><a href="http://127.0.0.1:8000/personal_cabinet/">Personal cab.</a></li>
+		<li><a href="http://127.0.0.1:8000/available_orders/">Available orders</a></li>
+		<li><a href="http://127.0.0.1:8000/register/">Registration</a></li>
+		<li><a href="http://127.0.0.1:8000/login/">Log in</a></li>
+	</ul>
+	<div id='orders_container'>
+		<h3>Orders:</h3>
+		<div class='returned_for_revision_orders_container'>
+			<div class='status_part'>
+				<h4 style='border-bottom: 1px solid black; padding: 20px; margin-top: 0px; background-color: #9FB4CC;'>Returned for revision</h4>
+			</div>
+			<div>
+				<table class='order_table'>
+					{% if orders_returned_for_revision %}
+					<thead>
+						<tr>
+						<th>Order number</th>
+						<th>Order topic</th>
+						<th>Order subject</th>
+						<th>Order pages</th>
+						<th>Order sources</th>
+						</tr>
+					</thead>
+					
+					
+					<tbody>
+						{% for order in orders_returned_for_revision %}
+						<tr>
+							<td><a href="{{order.get_absolut_url}}">{{order.number}}</a></td>
+							<td>{{order.topic}}</td>
+							<td>{{order.subject}}</td>
+							<td>{{order.number_of_pages}}</td>
+							<td>{{order.number_of_sources}}</td>	
+						</tr>
+						{% endfor %}
+					</tbody>
+					{% endif %}
+				</table>
+			</div>
+		</div>
+		<div class='in_progress_orders_container'>
+			<div class='status_part'>
+				<h4 style='border-bottom: 1px solid black; padding: 20px; margin-top: 0px; background-color: #9FB4CC;'>In progress</h4>
+			</div>
+			<div>
+				<table class='order_table'>
+					{% if orders_in_progress %}
+					<thead>
+						<tr>
+						<th>Order number</th>
+						<th>Order topic</th>
+						<th>Order subject</th>
+						<th>Order pages</th>
+						<th>Order sources</th>
+						</tr>
+					</thead>
+					
+					
+					<tbody>
+						{% for order in orders_in_progress %}
+						<tr>
+							<td><a href="{{order.get_absolut_url}}">{{order.number}}</a></td>
+							<td>{{order.topic}}</td>
+							<td>{{order.subject}}</td>
+							<td>{{order.number_of_pages}}</td>
+							<td>{{order.number_of_sources}}</td>	
+						</tr>
+						{% endfor %}
+					</tbody>
+					{% endif %}
+				</table>
+			</div>
+		</div>
+
+		<div class='submitted_orders_container'>
+			<div class='status_part'>
+				<h4 style='border-bottom: 1px solid black; padding: 20px; margin-top: 0px; background-color: #9FB4CC;'>Submitted</h4>
+			</div>
+			<div>
+				<table class='order_table'>
+					{% if orders_on_checking or orders_on_checking_with_controller %}
+					<thead>
+						<tr>
+						<th>Order number</th>
+						<th>Order topic</th>
+						<th>Order subject</th>
+						<th>Order pages</th>
+						<th>Order sources</th>
+						</tr>
+					</thead>
+					
+					
+					<tbody>
+						{% for order in orders_on_checking %}
+						<tr>
+							<td><a href="{{order.get_absolut_url}}">{{order.number}}</a></td>
+							<td>{{order.topic}}</td>
+							<td>{{order.subject}}</td>
+							<td>{{order.number_of_pages}}</td>
+							<td>{{order.number_of_sources}}</td>	
+						</tr>
+						{% endfor %}
+
+						{% for order in orders_on_checking_with_controller %}
+						<tr>
+							<td><a href="{{order.get_absolut_url}}">{{order.number}}</a></td>
+							<td>{{order.topic}}</td>
+							<td>{{order.subject}}</td>
+							<td>{{order.number_of_pages}}</td>
+							<td>{{order.number_of_sources}}</td>	
+						</tr>
+						{% endfor %}
+					</tbody>
+					{% endif %}
+				</table>
+			</div>
+		</div>
+
+	</div>
+
+</body>
+</html>

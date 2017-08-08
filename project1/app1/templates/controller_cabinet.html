@@ -1,0 +1,44 @@
+<html>
+<head>
+	<title>Controller cab.</title>
+</head>
+<body>
+	<h1>Here is controller cabinet</h1>
+	<ul class='side_menu'>
+		<li><a href="http://127.0.0.1:8000/for_check/">For check</a></li>
+		<li><a href='http://127.0.0.1:8000/controller_cabinet/'>Controller cab.</a></li>
+		<li><a href="http://127.0.0.1:8000/register/">Registration</a></li>
+		<li><a href="http://127.0.0.1:8000/login/">Log in</a></li>
+	</ul>
+	<div id='controller_orders_table_container'>
+		<table class='order_table'>
+		{% if orders %}
+			<caption>Available orders</caption>
+				<thead>
+					<tr>
+					<th>Order number</th>
+					<th>Order topic</th>
+					<th>Order subject</th>
+					<th>Order pages</th>
+					<th>Order sources</th>
+					</tr>
+				</thead>
+					
+					
+				<tbody>
+				{% for order in orders %}
+					<tr>
+						<td><a href="{{order.get_absolut_url}}">{{order.number}}</a></td>
+						<td>{{order.topic}}</td>
+						<td>{{order.subject}}</td>
+						<td>{{order.number_of_pages}}</td>
+						<td>{{order.number_of_sources}}</td>	
+					</tr>
+				{% endfor %}
+				</tbody>
+				{% endif %}
+		</table>
+	</div>
+
+</body>
+</html>

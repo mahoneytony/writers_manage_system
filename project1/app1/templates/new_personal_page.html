@@ -1,0 +1,72 @@
+<html>
+<head>
+	<title>Order {{order.number}}</title>
+	<style type="text/css">
+
+		#header_container {
+			height: 200px;
+			width: 100%;
+			margin-top: 0px;
+			background-color: green;
+			margin-bottom: 0px;
+			padding-bottom: 0px;
+		}
+
+		#main_container {
+			margin: 0px;
+			padding: 0px;
+			background-color: pink;
+			width: 100%;
+		}
+
+		.left-side_menu {
+			width: 200px;
+			background-color: #AC9F80;
+		}
+
+		.side_menu li {
+			width: 200px;
+			list-style: none;
+			text-align: left;
+			margin-top: 0px;
+			margin-bottom: 0px;
+			padding-top: 20px;
+			padding-bottom: 20px;
+			padding-left: 10px;
+		}
+
+		#footer_container {
+			height: 200px;
+			width: 100%;
+			margin-bottom: 0px;
+			background-color: green;
+		}
+
+	</style>
+</head>
+<body>
+
+	<div id='header_container'></div>
+
+	<div id='main_container'>
+		<div class='left-side_menu'>
+				<ul class='side_menu'>
+					<li><a href="http://127.0.0.1:8000/create_order/">Admin panel</a></li>
+					<li><a href="#">Check orders</a></li>
+					<li><a href="#">My shedule</a></li>
+					<li><a href="#">Payment statisyics</a></li>
+					<li><a href="http://127.0.0.1:8000/to_apply_order_list/">To apply</a></li>
+					<li><a href="http://127.0.0.1:8000/personal/">Profile</a></li>
+					<li><a href="http://127.0.0.1:8000/available_orders/">Available orders</a></li>
+					<li><a href="http://127.0.0.1:8000/for_check/">For check</a></li>
+					<li><a href="http://127.0.0.1:8000/to_apply/">To apply</a></li>
+					<li><a href="#">Help desk</a></li>
+				</ul>
+		</div>
+
+	</div>
+
+	<div id='footer_container'></div>
+
+</body>
+</html>

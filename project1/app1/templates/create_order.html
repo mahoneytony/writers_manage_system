@@ -1,0 +1,254 @@
+
+<html>
+<head>
+	<title>Create new order</title>
+	<style type="text/css">
+
+	/* HEADER */
+	.header_container {
+		margin-top: -18px;
+		
+	}
+
+	#balance_table {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 250px;
+		height: 195px;
+		background-color: #A3BE75;
+		border-bottom: 5px solid black;
+	}
+
+	#balance_table p{
+		position: absolute;
+		top: 55px;
+		left: 55px;
+		background-color: blue;
+		font-size: 140%;
+	}
+
+	#how_to_earn_more {
+		position: absolute;
+		top: 0;
+		left: 250;
+		width: 250px;
+		height: 195px;
+		background-color: #A3BE75;
+		border-bottom: 5px solid black;
+	}
+
+	#how_to_earn_more p{
+		padding-top: 75px;
+		padding-left: 50px;
+	}
+
+	#skills_salary {
+		position: absolute;
+		top: 0;
+		left: 500;
+		width: 250px;
+		height: 195px;
+		background-color: #A3BE75;
+		border-bottom: 5px solid black;
+	}
+	#rating_tarif_table {
+		position: absolute;
+		top: 0;
+		left: 750;
+		width: 250px;
+		height: 195px;
+		background-color: #A3BE75;
+		border-bottom: 5px solid blue;
+	}
+
+	#rating_table {
+		position: absolute;
+		top: 40;
+		left: 20;
+		padding-top: 0px;
+		padding-left: 30px;
+		padding-right: 30px;
+		background-color: #A0A0A0;
+		border-radius: 10px;
+		border: 3px solid #717171;
+	}
+
+	#login {
+		position: absolute;
+		top: 0;
+		left: 1000;
+		width: 270px;
+		height: 195px;
+		border-bottom: 5px solid black;
+		background-color: #A3BE75;
+	}
+
+	#login input[type='text'] {
+		position: absolute;
+		top: 30;
+		left: 30;
+	}
+
+	#login input[type='password'] {
+		position: absolute;
+		top: 80;
+		left: 30;
+	}
+
+	#login input[type='submit'] {
+		position: absolute;
+		top: 130;
+		left: 90;
+	}
+
+	/* MAIN */
+
+	#my_orders {
+		position: absolute;
+		top: 200px;
+		left: 0px;
+		height: 600px;
+		width: 250px;
+		background-color: pink;
+	}
+
+	.side_menu li {
+		width: 200px;
+		list-style: none;
+		text-align: left;
+		margin-top: 0px;
+		margin-bottom: 0px;
+		padding-top: 20px;
+		padding-bottom: 20px;
+		padding-left: 20px;
+	}
+
+	.side_menu li:hover {
+		background-color: white;
+	}
+
+	.side_menu a {
+		width: 100%;
+		height: 100%;
+	}
+
+	#main_part {
+		position: absolute;
+		top: 200px;
+		left: 300px;
+		height: 600px;
+		width: 700px;
+		background-color: #B4A3A3;
+		float: right;
+
+	}
+
+	#shedule {
+		position: absolute;
+		top: 200px;
+		left: 1000px;
+		height: 600px;
+		width: 300px;
+		background-color: #942B2B;
+	}
+
+	#exel_form {
+		position: absolute;
+		top: 50px;
+		bottom: 50px;
+		left: 50px;
+		right: 50px;
+		background-color: red;
+	}
+
+	#exel_form input[type='text'] {
+		margin-top: 230px;
+		margin-left: 200px;
+	}
+			/* FOOTER */
+
+	.footer_container {
+		position: absolute;
+		top: 800px;
+		left: 0px;
+		width: 100%;
+		background-color: black;
+		height: 100px;
+	}
+	</style>
+</head>
+<body>
+	<header>
+		
+		<div class='header_container'>
+
+			<div id='balance_table'>
+				<p>Balance: 150 UAH</p>
+			</div>
+
+			<div id='how_to_earn_more'>
+				<p>Here answers how to earn more</p>
+			</div>
+
+			<div id= 'rating_tarif_table'>
+				<div id='rating_table' >
+					<p>Rating: 32</p>
+					<p>Tarif: 60 UAH/page</p>
+				</div>
+			</div>
+
+			<div id='skills_salary'>
+				<p>tktk</p>
+			</div>
+			<div id='login'>
+				<form id='login_form' type='text' method='post' action=''>
+					{% csrf_token %}
+					<input type='text' name='login' placeholder='login'>
+					<input type='password' name='password' placeholder='password'>
+					<input type='submit' value='log in'>
+				</form>
+			</div>
+
+			
+
+		</div>
+	</header>
+
+	<main>
+		<div class='main_container'>
+			<div id='my_orders'>
+				<ul class='side_menu'>
+					<li><a href="http://127.0.0.1:8000/to_apply_order_list/">To apply</a></li>
+					<li><a href="http://127.0.0.1:8000/personal/">Profile</a></li>
+					<li><a href="http://127.0.0.1:8000/available_orders/">Available orders</a></li>
+					<li><a href="http://127.0.0.1:8000/for_check/">For check</a></li>
+					<li><a href="#">Help desk</a></li>
+				</ul>
+			</div>
+
+			<div id='main_part'>
+				
+				<form action="http://127.0.0.1:8000/correction_page/" method='post' id='exel_form'>
+					{% csrf_token %}
+					<input type='text' name='exel_string' placeholder='Paste here'>
+					<input type='submit' value='Create'>
+				</form>	
+
+			</div>
+
+			<div id='shedule'>
+			</div>
+		</div>
+	</main>
+
+	<footer>
+		<div class= 'footer_container'>
+			<p>footer@ all rights reserver</p>
+		</div>
+	</footer>
+
+</body>
+</html>
+
+

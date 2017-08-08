@@ -1,0 +1,91 @@
+<html>
+<head>
+	<title>Main page</title>
+	<style type="text/css">
+
+	body {
+		background-color: #D7D7D7;
+		font-family: Geneva, Arial, Helvetica, sans-serif;
+	}
+	/* HEADER */
+	.header_container {
+		margin-top: -18px;
+		
+	}
+
+	
+	/* MAIN */
+
+	.side_menu {
+		margin-top: 200px;
+	}
+
+	.side_menu li {
+		width: 200px;
+		list-style: none;
+		text-align: left;
+		margin-top: 0px;
+		margin-bottom: 2px;
+		padding-top: 20px;
+		padding-bottom: 20px;
+		padding-left: 20px;
+		border: 1px solid black;
+
+	}
+
+	.side_menu li:hover {
+		background-color: #B4A3A3;
+	}
+
+	.side_menu a {
+		width: 100%;
+		height: 100%;
+		text-decoration: : none;
+	}
+
+	#main_part {
+		position: absolute;
+		top: 200px;
+		left: 300px;
+		bottom: 0px;
+		right: 0px;
+		background-color: #B4A3A3;
+		border: 1px solid black;
+	}
+
+	
+	</style>
+</head>
+<body>
+	
+
+		<div class='main_container'>
+			<div id='my_orders'>
+				<ul class='side_menu' >
+					{% if as_writer %}
+					<li><a href="http://127.0.0.1:8000/personal_cabinet/">Personal cab.</a></li>
+					<li><a href="http://127.0.0.1:8000/available_orders/">Available orders</a></li>
+					{% endif %}
+					{% if as_controller %}
+					<li><a href="http://127.0.0.1:8000/for_check/">For check</a></li>
+					<li><a href='controller_cabinet/'>Controller cab.</a></li>
+					{% endif %}
+					<li><a href="http://127.0.0.1:8000/register/">Registration</a></li>
+					<li><a href="http://127.0.0.1:8000/login/">Log in</a></li>
+				</ul>
+		</div>
+
+		<div id='main_part'>
+
+				<h1>Index page</h1>
+		</div>
+		<div id='shedule'>
+		</div>
+		</div>
+
+		
+
+</body>
+</html>
+
+

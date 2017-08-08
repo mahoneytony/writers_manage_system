@@ -1,0 +1,268 @@
+<html>
+<head>
+	<title>Personal</title>
+	<style type="text/css">
+
+	/* HEADER */
+	.header_container {
+		margin-top: -18px;
+		
+	}
+
+	#balance_table {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 380px;
+		height: 200px;
+		background-color: #C2A85C;
+	}
+
+	#how_to_earn_more {
+		position: absolute;
+		top: 0;
+		left: 300;
+		width: 380px;
+		height: 200px;
+		background-color: #C2A85C;
+	}
+
+	#how_to_earn_more p{
+		padding-top: 75px;
+		padding-left: 50px;
+	}
+
+	#skills_salary {
+		position: absolute;
+		top: 0;
+		left: 600;
+		width: 380px;
+		height: 200px;
+		background-color: #C2A85C;
+	}
+	#rating_tarif_table {
+		position: absolute;
+		top: 0;
+		left: 900;
+		width: 380px;
+		height: 200px;
+		background-color: #C2A85C;
+	}
+
+	
+	/* MAIN */
+
+	#my_orders {
+		position: absolute;
+		top: 200px;
+		left: 0px;
+		height: 600px;
+		width: 380px;
+		background-color: pink;
+	}
+
+	.side_menu li {
+		width: 200px;
+		list-style: none;
+		text-align: left;
+		margin-top: 0px;
+		margin-bottom: 0px;
+		padding-top: 20px;
+		padding-bottom: 20px;
+		padding-left: 20px;
+	}
+
+	.side_menu li:hover {
+		background-color: white;
+	}
+
+	.side_menu a {
+		width: 100%;
+		height: 100%;
+	}
+
+	#main_part {
+		position: absolute;
+		top: 200px;
+		left: 300px;
+		height: 600px;
+		width: 700px;
+		background-color: #B4A3A3;
+	}
+
+	#shedule {
+		position: absolute;
+		top: 200px;
+		left: 1000px;
+		height: 600px;
+		width: 300px;
+		background-color: #942B2B;
+	}
+
+	.order_table th {
+		padding-left: 30px;
+	}
+
+	.order_table td {
+		padding-left: 30px;
+	}
+	.order_table {
+		position: absolute;
+		top: 60px;
+	}
+	.dif_orders {
+		position: absolute;
+		top: 0px;
+		height: 40px;
+		left: 0px;
+		right: 0px;
+		background-color: #685050;
+	}
+
+	.order_status {
+		list-style: none;
+		height: 100%;
+	}
+
+	.order_status li {
+		display: inline;
+		width: 120px;
+		list-style: none;
+		text-align: left;
+		margin-top: 0px;
+		margin-bottom: 0px;
+		padding-top: 5px;
+		padding-bottom: 5px;
+		padding-left: 10px;
+		padding-right: 10px;
+	}
+
+	.order_status li:hover {
+		background-color: white;
+	}
+
+	.order_status a {
+		width: 100%;
+		height: 100%;
+	}
+
+	#hello {
+		position: absolute;
+		bottom: 20px; 
+	}
+
+	#logout {
+		position: absolute;
+		bottom: 30px;
+		left: 170px;
+	}
+	/* FOOTER */
+
+	.footer_container {
+		position: absolute;
+		top: 800px;
+		left: 0px;
+		width: 100%;
+		background-color: black;
+		height: 100px;
+	}
+	</style>
+</head>
+<body>
+	<header>
+		
+		<div class='header_container'>
+
+			<div id='balance_table'>
+				<p>Balance table</p>
+			</div>
+
+			<div id='how_to_earn_more'>
+				<p>Here answers how to earn more</p>
+			</div>
+
+			<div id= 'rating_tarif_table'>
+				<a href='http://127.0.0.1:8000/logout/'>logout</a>
+			</div>
+
+			<div id='skills_salary'>
+			</div>
+
+			
+		</div>
+	</header>
+
+	<main>
+		<div class='main_container'>
+			<div id='my_orders'>
+				<ul class='side_menu'>
+					<li><a href="http://127.0.0.1:8000/to_apply_order_list/">To apply</a></li>
+					<li><a href="http://127.0.0.1:8000/personal/">Profile</a></li>
+					<li><a href="http://127.0.0.1:8000/available_orders/">Available orders</a></li>
+					<li><a href="http://127.0.0.1:8000/for_check/">For check</a></li>
+					<li><a href="#">Help desk</a></li>
+				</ul>
+			</div>
+
+			<div id='main_part'>
+				<div class='dif_orders'>
+					<ul class='order_status'>
+						<li><a href="http://127.0.0.1:8000/in_progress_orders/">In progress</a></li>
+						<li><a href="http://127.0.0.1:8000/completed_orders/">Completed</a></li>
+						<li><a href="http://127.0.0.1:8000/my_orders_on_checking/">On checking</a></li>
+						<li><a href="http://127.0.0.1:8000/returned_from_precheck_list/">Returned from pre-check</a></li>
+					</ul>
+				</div>
+
+				<table class='order_table'>
+					{% if orders %}
+
+					<caption>All orders</caption>
+
+
+					<thead>
+						<tr>
+						<th>Order number</th>
+						<th>Order topic</th>
+						<th>Order subject</th>
+						<th>Order pages</th>
+						<th>Order sources</th>
+						</tr>
+					</thead>
+					
+					
+					<tbody>
+						{% for order in orders %}
+						<tr>
+							<td><a href="{{order.get_absolut_url}}">{{order.number}}</a></td>
+							<td>{{order.topic}}</td>
+							<td>{{order.subject}}</td>
+							<td>{{order.number_of_pages}}</td>
+							<td>{{order.number_of_sources}}</td>	
+						</tr>
+						{% endfor %}
+					</tbody>
+					{% endif %}
+				</table>
+
+				
+				
+			<h1 id='hello'>Hello {{user.username}}</h1>
+			<p id= 'logout'><a href='http://127.0.0.1:8000/logout/'>logout</a></p>
+			</div>
+
+			<div id='shedule'>
+			</div>
+		</div>
+	</main>
+
+	<footer>
+		<div class= 'footer_container'>
+			<p>footer@ all rights reserver</p>
+		</div>
+	</footer>
+
+</body>
+</html>
+
+

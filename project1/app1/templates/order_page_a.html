@@ -1,0 +1,139 @@
+<html>
+<head>
+	<title>Order {{order.number}}</title>
+</head>
+<body>
+
+	<p>Order: {{order.number}}</p>
+	<p>Order topic: {{order.topic}}</p>
+	<p style='background-color: #EAEE66; width:200px;'>Order status: {{order.status}}</p>
+	<p>{{admin}}</p>
+	<p>{{user.username}}</p>
+
+	<div id='my_orders' style='position:absolute; right:50px; top: 50px'>
+		<ul class='side_menu'>
+			<li><a href="http://127.0.0.1:8000/personal_cabinet/">Personal cab.</a></li>
+			<li><a href="http://127.0.0.1:8000/available_orders/">Available orders</a></li>
+			<li><a href="http://127.0.0.1:8000/">Main</a></li>
+		</ul>
+	</div>
+
+	{% if apply_order_button %}
+
+	<div id='apply_button_container'>
+		<form id='apply' method='post' action=''>
+			{%csrf_token%}
+			<input type='hidden' name='order_num' value='{{order.number}}'>
+			<button  formmethod='post' formaction='http://127.0.0.1:8000/apply_order/'>APPLY order</button>
+		</form>
+	</div>
+
+	{% endif %}
+
+
+	{% if messages_and_files_form %}
+
+	<div class='messages_and_files_display_container' style='border: 1px solid black; width: 800px; margin-left:100px;'>
+					<p id='messages_par' >Messages:</p>
+					<div class='messages_container'>
+
+
+						<div id='comment_form_container'>
+							<form id='comment_form' method="post" action='http://127.0.0.1:8000/create_message/'>
+							{% csrf_token %}
+								<input type='hidden' name='order_num' value='{{order.number}}'>
+								<textarea id='comment_place'  name='comment' rows="10" cols="63" palceholder='Tap your comment here...' style='margin-left: 50px;'></textarea>
+								<input id='send_button' type='submit' value='Send'>
+							</form>
+						</div>
+
+
+						{% if comments %}
+						<div class='comments_display_container' >
+							{% for comment in comments %}
+								<div class='comment_display_one' style='border: 1px solid black; width: 500px;'>
+
+
+										<p style='background-color:pink; width:70px;'>{{comment.author.username}}</p>  <p style='width:170px;'>{{comment.create_date}}</p>
+										<p>{{comment.text}}</p>
+
+
+								</div>
+							{% endfor %}
+						</div>
+						{% endif %}
+					</div>
+					<p id='files_par'>Files:</p>
+					<div class='files_container'>
+						<div id='add_order_file_container'>
+							<form id='send_order' enctype="multipart/form-data" method="post" action='http://127.0.0.1:8000/add_file_to_order/'>
+								{%csrf_token%}
+								<input type='hidden' name='order_num' value='{{order.number}}'>
+								<input type="file" name="order_file">
+								<input type="submit" value="Send">
+							</form>
+						</div>
+						
+						{% if files_list %}
+						<div class='file_link_display_container' >
+							{% for file in files_list %}
+								<div class='file_link_display_one'>
+
+
+										<p>{{file.author.username}}  <font size="2">{{file.create_date}}</font></p
+										<p><font size="2"><a href='{{file.order_file.url}}'>{{file.order_file.name}}</a></font></p>
+
+
+								</div>
+							{% endfor %}
+						</div>
+						{% endif %}
+					
+					</div>
+				</div>
+
+	{% endif %}
+
+
+	{% if final_file_upload_form %}
+
+	<div id='final_file_upload_container' style='border: 1px solid black; width: 500px; margin: 20 100 10 100'>
+		<p>Upload final file:</p>
+			<form id='send_final_file' enctype="multipart/form-data" method="post" action='http://127.0.0.1:8000/add_final_file_to_order/'>
+			{% csrf_token %}
+			<input type='hidden' name='order_num' value='{{order.number}}'>
+			<input type='file' name='order_file'>
+			<input type='submit' value='Send final file'>
+		</form>
+	</div>
+
+	{% endif %}
+
+	{% if take_for_check_button %}
+	<div id='take_for_check_button'>
+		<form action='http://127.0.0.1:8000/take_for_check/' method='post'>
+		{% csrf_token %}
+			<input type='hidden' value='{{order.number}}' name='order_num'>
+			<input type='submit' value='Take for check'>
+		</form>
+	</div>
+	{% endif %}
+
+	{% if controller_decision %}
+	<div id='correctors_decision'>
+		<form method='post'>
+		{% csrf_token %}
+			<button formaction='http://127.0.0.1:8000/results_of_checking/' value='set_as_done{{order.number}}' name='result_of_checking'>Approve</button>
+			<button formaction='http://127.0.0.1:8000/results_of_checking/' value='return_to_writer{{order.number}}' name='result_of_checking'>Return for revision</button>
+		</form>
+	</div>
+	{% endif %}
+
+	{% if final_file_link %}
+	<div id='final_file_download_container'>
+		<a href='{{final_file.order_file.url}}'>Final file</a>
+	</div>
+	{% endif %}
+
+</body>
+</html>
