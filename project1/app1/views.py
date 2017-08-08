@@ -85,9 +85,8 @@ def correction(request):
 		dict_out={}
 		for x, y in zip(keys, list_of_params):
    			dict_out[x] = y
-		
-		writers = User.objects.all()
-		return render(request, 'correction_page.html', dict_out)
+		writers = UserProfile.objects.filter(role='writer')
+		return render(request, 'correction_page.html', {'writers':writers})
 
 
 
