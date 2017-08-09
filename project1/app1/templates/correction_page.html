@@ -218,7 +218,7 @@
 				<p> Writer: 
 				<select name='writer_name'>
 				{% for writer in writers %}
-				<option>{{writer}}</option>
+				<option value='{{writer.id}}'>{{writer.username}}</option>
 				{% endfor %}
 				</select>
 				</p>
