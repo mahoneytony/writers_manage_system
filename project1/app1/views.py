@@ -121,12 +121,13 @@ def model_creating(request):
 								writer_time = request.POST['writer_time'],
 								writer_number = request.POST['writer_number'],
 								words_min = request.POST['words_min'],
-								writer_name = request.POST['writer_name'],
+								#writer_name = request.POST['writer_name'],
 								writer_email = request.POST['writer_email'],
 								send_date = request.POST['send_date'],
 								payment = request.POST['payment'],
 								payment_date = request.POST['payment_date'],
 								client_num_of_order = request.POST['client_num_of_order'],
+								writer = User.objects.get(id=request.POST['writer_id']),
 								)
 			model.save()
 			
