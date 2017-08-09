@@ -87,6 +87,8 @@ def correction(request):
    			dict_out[x] = y
 		
 		writers = User.objects.all()
+		dict_out['writers'] = writers
+
 		return render(request, 'correction_page.html', dict_out)
 
 
