@@ -216,11 +216,11 @@
 				<p>Words min: <input type='text' name='words_min' value='{{words_min}}'></p>
 
 				<p> Writer: 
-				<SELECT NAME="bev">
+				<select name='writer_name'>
 				{% for writer in writers %}
 				<option>{{writer}}</option>
 				{% endfor %}
-				</SELECT>
+				</select>
 				</p>
 
 				<p>Email: <input type='text' name='writer_email' value=' {{email}}'></p>
