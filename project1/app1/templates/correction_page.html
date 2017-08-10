@@ -217,6 +217,7 @@
 
 				<p> Writer: 
 				<select name='writer_id'>
+				<option selected value='status available'>status available</option>
 				{% for writer in writers %}
 				<option value='{{writer.id}}'>{{writer.username}}</option>
 				{% endfor %}

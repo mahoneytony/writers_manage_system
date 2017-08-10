@@ -96,6 +96,12 @@ def model_creating(request):
 	if request.method == 'POST':
 		form = Order_form(request.POST)
 		if form.is_valid():
+			if request.POST['writer_id'] == 'status available':
+				status_for_model = 'available'
+				writer_for_model = None
+			else:
+				status_for_model = 'unconfirmed'
+				writer_for_model = User.objects.get(id=request.POST['writer_id'])
 			
 			model = Order_model(number = request.POST['number'],
 								account = request.POST['account'],
@@ -116,7 +122,8 @@ def model_creating(request):
 								assign_date = request.POST['assign_date'],
 								details = request.POST['details'],
 								real_time_deadline = dl_transform(request.POST['real_time_deadline']),
-								status = request.POST['status'],
+								#status = request.POST['status'],
+								status = status_for_model,
 								writer_deadline = request.POST['writer_deadline'],
 								writer_time = request.POST['writer_time'],
 								writer_number = request.POST['writer_number'],
@@ -127,7 +134,8 @@ def model_creating(request):
 								payment = request.POST['payment'],
 								payment_date = request.POST['payment_date'],
 								client_num_of_order = request.POST['client_num_of_order'],
-								writer = User.objects.get(id=request.POST['writer_id']),
+								#writer = User.objects.get(id=request.POST['writer_id']),
+								writer = writer_for_model
 								)
 			model.save()
 			
