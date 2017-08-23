@@ -489,6 +489,7 @@ def writers_personal_cabinet(request):
 	orders_returned_for_revision = user_model.order_model_set.filter(status='returned for revision')
 	orders_on_checking = user_model.order_model_set.filter(status='on checking')
 	orders_on_checking_with_controller = user_model.order_model_set.filter(status='on checking with controller')
+	unconfirmed_orders = user_model.order_model_set.filter(status='unconfirmed')
 	if request.method == 'GET':
 		return render(request, 'writers_cabinet_page.html',
 		 {'orders_in_progress':orders_in_progress,
@@ -496,6 +497,7 @@ def writers_personal_cabinet(request):
 		 'orders_returned_for_revision':orders_returned_for_revision,
 		 'orders_on_checking':orders_on_checking,
 		 'orders_on_checking_with_controller':orders_on_checking_with_controller,
+		 'unconfirmed_orders':unconfirmed_orders,
 		 })
 
 
@@ -641,6 +643,10 @@ def order_page_a(request, number):
 			comments = order.comment_set.filter(Q(author=user)|Q(author=admin)|Q(author=controller)).order_by('-create_date')
 			files_list = order.filemodel_set.filter(Q(author=user)|Q(author=admin)|Q(author=controller)).filter(is_final=False).order_by('-create_date')
 			final_file_upload_form = True
+
+		elif order.status == 'unconfirmed':
+			confirmation_menu = True
+
 		elif order.status == 'done':
 			pass
 	elif user_role == 'controller':
@@ -688,5 +694,16 @@ def order_page_a(request, number):
 			'controller_decision':controller_decision,
 			'final_file':final_file,
 			'final_file_link':final_file_link,
+			'confirmation_menu':confirmation_menu,
 			}
 		)
+
+
+def confirmation(request):
+	order = Order_model.objects.get(number=request.POST['order_num'])
+	if request.POST['writers_desigion'] == 'confirm':
+		order.status = 'in progress'
+	elif request.POST['writers_desigion'] == 'reject':
+		order.status = 'rejected'
+	order.save()
+	return HttpResponseRedirect('http://127.0.0.1:8000/personal_cabinet')
