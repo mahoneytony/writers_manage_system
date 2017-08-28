@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.shortcuts import render, render_to_response
-from app1.models import Order_model, UserProfile, Tender, Comment, FileModel
+from app1.models import *
 from django.http import HttpResponse, HttpResponseRedirect
 from app1.forms import Exel_field_form, Order_form, UserForm, UserProfileForm, UploadOrderFileForm, CommentForm, FileForm
 import datetime
@@ -45,7 +45,7 @@ def extract_from_exel(request):
 		dict_out={}
 		for x, y in zip(keys, list_of_params):
    			dict_out[x] = y
-		
+
 		return render(request, 'correction_page.html', dict_out)
 
 #def create_order(request):
@@ -67,7 +67,7 @@ def extract_from_exel(request):
    				dict_out[x] = y
 
 			return render(request, 'correction_page.html', dict_out)
-		else: 
+		else:
 			return HttpResponse('sdsdsd')
 '''
 @login_required
@@ -102,7 +102,7 @@ def model_creating(request):
 			else:
 				status_for_model = 'unconfirmed'
 				writer_for_model = User.objects.get(id=request.POST['writer_id'])
-			
+
 			model = Order_model(number = request.POST['number'],
 								account = request.POST['account'],
 								files = request.POST['files'],
@@ -138,7 +138,7 @@ def model_creating(request):
 								writer = writer_for_model
 								)
 			model.save()
-			
+
 			return HttpResponseRedirect('http://127.0.0.1:8000/')
 		else:
 			return HttpResponse(form.errors)
@@ -241,9 +241,9 @@ def register(request):
 				mobile_number=request.POST['mobile_number'],
 				social=request.POST['social'],
 				user = user_model)
-			
+
 			user_profile_model.save()
-			
+
 			return HttpResponseRedirect('/login/')
 		else:
 			return HttpResponse(form.errors)
@@ -336,7 +336,7 @@ def apply_order(request):
 def to_apply_list(request):
 	tenders = Tender.objects.all()
 	return render(request, 'to_apply.html', {'tenders':tenders})
-	
+
 def set_writer(request):
 	value = request.POST['values']
 	separator_index = value.index('//')
@@ -385,7 +385,7 @@ def returnen_from_precheck_list(request):
 		return render(request, 'personal.html', {'orders':orders, 'user':user})
 
 
-	
+
 def create_message(request):
 	comment_form = CommentForm(request.POST)
 	user = User.objects.get(email=request.user.email)
@@ -477,7 +477,7 @@ def upload_final_order_file(request):
 			return HttpResponse(form.errors)
 	else: HttpResponseRedirect('http://127.0.0.1:8000/personal_cabinet')
 
-	
+
 
 
 
@@ -592,7 +592,7 @@ def order_page(request, number):
 		'files_list':files_list,
 		'status_on_checking':status_on_checking,
 		'status_on_checking_with_controller':status_on_checking_with_controller,
-		'final_file':final_file, 
+		'final_file':final_file,
 		'status_returned_for_revision':status_returned_for_revision,
 		})
 
@@ -600,7 +600,7 @@ def order_page(request, number):
 
 def order_page_a(request, number):
 	order = Order_model.objects.get(number=number)
-	user = User.objects.get(id=request.user.id) 
+	user = User.objects.get(id=request.user.id)
 	user_role = user.userprofile.role
 	comments = order.comment_set.order_by('-create_date')
 	files_list = order.filemodel_set.filter(is_final=False).order_by('-create_date')
@@ -613,6 +613,7 @@ def order_page_a(request, number):
 	controller_decision =False
 	final_file_link = False
 	final_file = False
+	confirmation_menu = False
 
 
 	if user_role == 'writer':
@@ -646,6 +647,7 @@ def order_page_a(request, number):
 
 		elif order.status == 'unconfirmed':
 			confirmation_menu = True
+			messages_and_files_form = True
 
 		elif order.status == 'done':
 			pass
@@ -701,9 +703,18 @@ def order_page_a(request, number):
 
 def confirmation(request):
 	order = Order_model.objects.get(number=request.POST['order_num'])
+	user = User.objects.get(id=request.user.id)
 	if request.POST['writers_desigion'] == 'confirm':
 		order.status = 'in progress'
 	elif request.POST['writers_desigion'] == 'reject':
-		order.status = 'rejected'
+		rejection = Rejection(
+			rejector = User.objects.get(id = request.user.id),
+			order = order,
+			date_of_rejection = datetime.datetime.now()
+			)
+		rejection.save()
+		order.status = 'available'
+		order.writer = None
 	order.save()
+	user.save()
 	return HttpResponseRedirect('http://127.0.0.1:8000/personal_cabinet')

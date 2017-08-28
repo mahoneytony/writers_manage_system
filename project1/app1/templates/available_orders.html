@@ -6,7 +6,7 @@
 	/* HEADER */
 	.header_container {
 		margin-top: -18px;
-		
+
 	}
 
 	#balance_table {
@@ -108,19 +108,12 @@
 
 	/* FOOTER */
 
-	.footer_container {
-		position: absolute;
-		top: 800px;
-		left: 0px;
-		width: 100%;
-		background-color: black;
-		height: 100px;
-	}
+
 	</style>
 </head>
 <body>
 	<header>
-		
+
 		<div class='header_container'>
 
 			<div id='balance_table'>
@@ -168,8 +161,8 @@
 						<th>Order sources</th>
 						</tr>
 					</thead>
-					
-					
+
+
 					<tbody>
 						{% for order in orders %}
 						<tr>
@@ -177,15 +170,15 @@
 							<td>{{order.topic}}</td>
 							<td>{{order.subject}}</td>
 							<td>{{order.number_of_pages}}</td>
-							<td>{{order.number_of_sources}}</td>	
+							<td>{{order.number_of_sources}}</td>
 						</tr>
 						{% endfor %}
 					</tbody>
 					{% endif %}
 				</table>
 
-				
-				
+
+
 
 			</div>
 
@@ -194,13 +187,6 @@
 		</div>
 	</main>
 
-	<footer>
-		<div class= 'footer_container'>
-			<p>footer@ all rights reserver</p>
-		</div>
-	</footer>
 
 </body>
 </html>
-
-
