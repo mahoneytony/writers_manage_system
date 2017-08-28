@@ -8,7 +8,7 @@
 	background-color: #CFD8E3;
 }
 
-.in_progress_orders_container, .returned_for_revision_orders_container, .submitted_orders_container  {
+.in_progress_orders_container, .returned_for_revision_orders_container, .submitted_orders_container, .unconfirmed_orders_container  {
 	margin-bottom: 3px;
 	border: 1px solid black;
 }
@@ -60,6 +60,45 @@
 				</table>
 			</div>
 		</div>
+
+
+		<div class='unconfirmed_orders_container'>
+			<div class='status_part'>
+				<h4 style='border-bottom: 1px solid black; padding: 20px; margin-top: 0px; background-color: #9FB4CC;'>Unconfirmed</h4>
+			</div>
+			<div>
+				<table class='order_table'>
+					{% if unconfirmed_orders %}
+					<thead>
+						<tr>
+						<th>Order number</th>
+						<th>Order topic</th>
+						<th>Order subject</th>
+						<th>Order pages</th>
+						<th>Order sources</th>
+						</tr>
+					</thead>
+					
+					
+					<tbody>
+						{% for order in unconfirmed_orders %}
+						<tr>
+							<td><a href="{{order.get_absolut_url}}">{{order.number}}</a></td>
+							<td>{{order.topic}}</td>
+							<td>{{order.subject}}</td>
+							<td>{{order.number_of_pages}}</td>
+							<td>{{order.number_of_sources}}</td>	
+						</tr>
+						{% endfor %}
+					{% endif %}
+				</table>
+			</div>
+		</div>
+
+
+
+
+
 		<div class='in_progress_orders_container'>
 			<div class='status_part'>
 				<h4 style='border-bottom: 1px solid black; padding: 20px; margin-top: 0px; background-color: #9FB4CC;'>In progress</h4>

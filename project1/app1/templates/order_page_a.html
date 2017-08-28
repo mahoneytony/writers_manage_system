@@ -18,6 +18,20 @@
 		</ul>
 	</div>
 
+	{% if confirmation_menu %}
+
+	<div id='confirmation_menu_container'>
+		<form id='confirmation' method='post' action='http://127.0.0.1:8000/confirmation/'>
+			{% csrf_token %}
+			<input type='hidden' name='order_num' value='{{order.number}}'>
+			<button value='confirm' name='writers_desigion'>Confirm</button>
+			<button value='reject' name='writers_desigion'>Reject</button>
+		</form>
+
+	</div>
+
+	{% endif %}
+
 	{% if apply_order_button %}
 
 	<div id='apply_button_container'>

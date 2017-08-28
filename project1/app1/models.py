@@ -34,7 +34,7 @@ class Order_model(models.Model):
 	details = models.CharField(max_length=300, blank=True)
 	real_time_deadline = models.TimeField(blank=True, null=True)
 	status = models.CharField(max_length=300, blank=True, default='available')
-	writer_deadline = models.CharField(max_length=300, blank=True, null=True) 
+	writer_deadline = models.CharField(max_length=300, blank=True, null=True)
 	writer_time = models.TimeField(blank=True, null=True)
 	writer_number = models.CharField(max_length=300, blank=True)
 	words_min = models.IntegerField(blank=True, null=True)
@@ -47,8 +47,8 @@ class Order_model(models.Model):
 	client_num_of_order = models.CharField(max_length=300, blank=True)
 	controller = models.ForeignKey(UserProfile, null=True)
 	times_returned_for_revision = models.IntegerField(default=0)
-	
-	
+
+
 
 	def __str__(self):
 		return self.number
@@ -62,7 +62,7 @@ class Order_model(models.Model):
 
 
 
-	
+
 
 class Tender(models.Model):
 	order = models.OneToOneField(Order_model)
@@ -90,3 +90,10 @@ class FileModel(models.Model):
 	is_final = models.BooleanField(blank=True, default=False)
 
 
+class Rejection(models.Model):
+	rejector = models.ForeignKey(User)
+	order = models.OneToOneField(Order_model)
+	date_of_rejection = models.DateTimeField()
+
+	def __str__(self):
+		return self.rejector.username + '-' + self.order.number

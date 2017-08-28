@@ -53,6 +53,7 @@ urlpatterns = [
     url(r'^returned_for_revision_writers_orders/$', views.returned_for_revision_writers_orders),
     url(r'^controller_cabinet/$', views.controller_cabinet),
     url(r'^take_for_check/$', views.take_for_check),
+    url(r'^confirmation/$', views.confirmation),
     url(r'^(?P<number>\d+)/$', views.order_page_a),
     url(r'^(?P<number>\w+)/$', order_page),
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
