@@ -3,7 +3,7 @@
 <head>
 	<title>Create new order</title>
 	<style type="text/css">
-	body { 
+	body {
 		color: white;
 		background-color: grey;
 	}
@@ -12,7 +12,7 @@
 	/* HEADER */
 	.header_container {
 		margin-top: -18px;
-		
+
 	}
 
 	#balance_table {
@@ -23,7 +23,7 @@
 		height: 200px;
 		background-color: transparent;
 		border-right: 2px solid white;
-		
+
 	}
 
 	#how_to_earn_more {
@@ -33,7 +33,7 @@
 		width: 380px;
 		height: 200px;
 		background-color: transparent;
-		
+
 	}
 
 	#how_to_earn_more p{
@@ -132,11 +132,11 @@
 		top: 1560;
 		left: 300;
 	}
-	
+
 	img {
 		width: 20px;
 		height: 20px;
-		margin-right: 10px; 
+		margin-right: 10px;
 	}
 			/* FOOTER */
 
@@ -152,7 +152,7 @@
 </head>
 <body>
 	<header>
-		
+
 		<div class='header_container'>
 
 			<div id='balance_table'>
@@ -169,7 +169,7 @@
 			<div id='skills_salary'>
 			</div>
 
-			
+
 
 		</div>
 	</header>
@@ -193,7 +193,7 @@
 				{% csrf_token %}
 				<p>Order number:<input type='text' name='number' value='{{order}}'></p>
 				<p>Account: <input type='text' name='account' value='{{account}}'></p>
-				<p>Files: <input type='text' name='files' value='{{files}}'></p>	
+				<p>Files: <input type='text' name='files' value='{{files}}'></p>
 				<p>Subject: <input type='text' name='subject' value='{{subject}}'></p>
 				<p>Topic: <input type='text' name='topic' value='{{topic}}'></p>
 				<p>Deadline: <input type='text' name='client_deadline' value='{{deadline}}'></p>
@@ -215,9 +215,14 @@
 				<p>Writer number: <input type='text' name='writer_number' value='{{writer_num}}'></p>
 				<p>Words min: <input type='text' name='words_min' value='{{words_min}}'></p>
 
-				<p> Writer: 
-				<select name='writer_id'>
+				<p> Writer:
+
+				<select name='writer_name'>
+				{% for writer in writers %}
 				<option selected value='status available'>status available</option>
+				<option value="{{writer.username}}">{{writer.username}}</option>
+				<select name='writer_id'>
+
 				{% for writer in writers %}
 				<option value='{{writer.id}}'>{{writer.username}}</option>
 				{% endfor %}
@@ -231,7 +236,7 @@
 				<p>File: <input type='text' value=' {{file}}'></p>
 				<p>Name: <input type='text' value=' {{name}}'></p>
 				<p>Client: <input type='text' name='client_num_of_order' value=' {{client}}'></p>
-				
+
 
 				<p>Details:<p>
 				<textarea id='details' name='details' id='details_area'></textarea>
@@ -256,5 +261,3 @@
 
 </body>
 </html>
-
-
