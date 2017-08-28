@@ -216,18 +216,17 @@
 				<p>Words min: <input type='text' name='words_min' value='{{words_min}}'></p>
 
 				<p> Writer:
-
-				<select name='writer_name'>
-				{% for writer in writers %}
-				<option selected value='status available'>status available</option>
-				<option value="{{writer.username}}">{{writer.username}}</option>
 				<select name='writer_id'>
-
+				<option selected value='status available'>status available</option>
 				{% for writer in writers %}
 				<option value='{{writer.id}}'>{{writer.username}}</option>
+				</p>
 				{% endfor %}
 				</select>
-				</p>
+
+
+
+
 
 				<p>Email: <input type='text' name='writer_email' value=' {{email}}'></p>
 				<p>Send date: <input type='text' name='send_date' value=' {{send_date}}'></p>
