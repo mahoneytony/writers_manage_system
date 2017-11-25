@@ -179,17 +179,17 @@
 			<div id='my_orders'>
 				<ul class='side_menu'>
 
-					<li><a href="http://18.195.44.123:8000/to_apply_order_list/">To apply</a></li>
-					<li><a href="http://18.195.44.123:8000/personal/">profile</a></li>
-					<li><a href="http://18.195.44.123:8000/available_orders/">available orders</a></li>
-					<li><a href="http://18.195.44.123:8000/for_check/">or check</a></li>
+					<li><a href="/to_apply_order_list/">To apply</a></li>
+					<li><a href="/personal/">profile</a></li>
+					<li><a href="/available_orders/">available orders</a></li>
+					<li><a href="/for_check/">or check</a></li>
 					<li><a href="#">help desk</a></li>
 				</ul>
 			</div>
 
 			<div id='main_part'>
 
-				<form action='http://18.195.44.123:8000/done/' method='post' id='correction_form'>
+				<form action='/done/' method='post' id='correction_form'>
 				{% csrf_token %}
 				<p>Order number:<input type='text' name='number' value='{{order}}'></p>
 				<p>Account: <input type='text' name='account' value='{{account}}'></p>

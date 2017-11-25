@@ -1,0 +1,1 @@
+find project1 -type f -exec sed -i 's/18.195.44.123/18.194.61.123/g' {} \;

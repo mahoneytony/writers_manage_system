@@ -441,9 +441,9 @@
 		<div class='main_container'>
 			<div id='my_orders'>
 				<ul class='side_menu'>
-					<li><a href="http://18.195.44.123:8000/personal_cabinet/">Personal cab.</a></li>
-					<li><a href="http://18.195.44.123:8000/available_orders/">Available orders</a></li>
-					<li><a href="http://18.195.44.123:8000/">Main</a></li>
+					<li><a href="http://18.194.61.123:8000/personal_cabinet/">Personal cab.</a></li>
+					<li><a href="http://18.194.61.123:8000/available_orders/">Available orders</a></li>
+					<li><a href="http://18.194.61.123:8000/">Main</a></li>
 				</ul>
 			</div>
 
@@ -510,7 +510,7 @@
 				<form id='apply' method='post' action=''>
 					{%csrf_token%}
 					<input type='hidden' name='order_num' value='{{order.number}}'>
-					<button  formmethod='post' formaction='http://18.195.44.123:8000/apply_order/'>APPLY order</button>
+					<button  formmethod='post' formaction='http://18.194.61.123:8000/apply_order/'>APPLY order</button>
 				</form>
 				<div class='messages_and_files_display_container'>
 					<p id='messages_par' >Messages:</p>
@@ -518,7 +518,7 @@
 
 
 						<div id='comment_form_container'>
-							<form id='comment_form' method="post" action='http://18.195.44.123:8000/create_message/'>
+							<form id='comment_form' method="post" action='http://18.194.61.123:8000/create_message/'>
 							{% csrf_token %}
 								<input type='hidden' name='order_num' value='{{order.number}}'>
 								<textarea id='comment_place'  name='comment' rows="20" cols="63" palceholder='Tap your comment here...'></textarea>
@@ -545,7 +545,7 @@
 					<p id='files_par'>Files:</p>
 					<div class='files_container'>
 						<div id='add_order_file_container'>
-							<form id='send_order' enctype="multipart/form-data" method="post" action='http://18.195.44.123:8000/add_file_to_order/'>
+							<form id='send_order' enctype="multipart/form-data" method="post" action='http://18.194.61.123:8000/add_file_to_order/'>
 								{%csrf_token%}
 								<input type='hidden' name='order_num' value='{{order.number}}'>
 								<input type="file" name="order_file">
@@ -577,7 +577,7 @@
 
 				<div id='final_file_upload_container'>
 					<p>Upload final file:</p>
-					<form id='send_final_file' enctype="multipart/form-data" method="post" action='http://18.195.44.123:8000/add_final_file_to_order/'>
+					<form id='send_final_file' enctype="multipart/form-data" method="post" action='http://18.194.61.123:8000/add_final_file_to_order/'>
 						{% csrf_token %}
 						<input type='hidden' name='order_num' value='{{order.number}}'>
 						<input type='file' name='order_file'>
@@ -591,7 +591,7 @@
 
 
 						<div id='comment_form_container'>
-							<form id='comment_form' method="post" action='http://18.195.44.123:8000/create_message/'>
+							<form id='comment_form' method="post" action='http://18.194.61.123:8000/create_message/'>
 							{% csrf_token %}
 								<input type='hidden' name='order_num' value='{{order.number}}'>
 								<textarea id='comment_place'  name='comment' rows="20" cols="63" palceholder='Tap your comment here...'></textarea>
@@ -618,7 +618,7 @@
 					<p id='files_par'>Files:</p>
 					<div class='files_container'>
 						<div id='add_order_file_container'>
-							<form id='send_order' enctype="multipart/form-data" method="post" action='http://18.195.44.123:8000/add_file_to_order/'>
+							<form id='send_order' enctype="multipart/form-data" method="post" action='http://18.194.61.123:8000/add_file_to_order/'>
 								{%csrf_token%}
 								<input type='hidden' name='order_num' value='{{order.number}}'>
 								<input type="file" name="order_file">
@@ -655,7 +655,7 @@
 
 					<div id='final_file_upload_container'>
 					<p>Upload final file:</p>
-					<form id='send_final_file' enctype="multipart/form-data" method="post" action='http://18.195.44.123:8000/add_final_file_to_order/'>
+					<form id='send_final_file' enctype="multipart/form-data" method="post" action='http://18.194.61.123:8000/add_final_file_to_order/'>
 						{% csrf_token %}
 						<input type='hidden' name='order_num' value='{{order.number}}'>
 						<input type='file' name='order_file'>
@@ -669,7 +669,7 @@
 
 
 						<div id='comment_form_container'>
-							<form id='comment_form' method="post" action='http://18.195.44.123:8000/create_message/'>
+							<form id='comment_form' method="post" action='http://18.194.61.123:8000/create_message/'>
 							{% csrf_token %}
 								<input type='hidden' name='order_num' value='{{order.number}}'>
 								<textarea id='comment_place'  name='comment' rows="20" cols="63" palceholder='Tap your comment here...'></textarea>
@@ -696,7 +696,7 @@
 					<p id='files_par'>Files:</p>
 					<div class='files_container'>
 						<div id='add_order_file_container'>
-							<form id='send_order' enctype="multipart/form-data" method="post" action='http://18.195.44.123:8000/add_file_to_order/'>
+							<form id='send_order' enctype="multipart/form-data" method="post" action='http://18.194.61.123:8000/add_file_to_order/'>
 								{%csrf_token%}
 								<input type='hidden' name='order_num' value='{{order.number}}'>
 								<input type="file" name="order_file">
@@ -731,7 +731,7 @@
 					</div>
 
 					<div id='take_for_check_button'>
-						<form action='http://18.195.44.123:8000/take_for_check/' method='post'>
+						<form action='http://18.194.61.123:8000/take_for_check/' method='post'>
 							{% csrf_token %}
 							<input type='hidden' value='{{order.number}}' name='order_num'>
 							<input type='submit' value='Take for check'>
@@ -749,8 +749,8 @@
 						<div id='correctors_decision'>
 							<form method='post'>
 							{% csrf_token %}
-								<button formaction='http://18.195.44.123:8000/results_of_checking/' value='set_as_done{{order.number}}' name='result_of_checking'>Approve</button>
-								<button formaction='http://18.195.44.123:8000/results_of_checking/' value='return_to_writer{{order.number}}' name='result_of_checking'>Return for revision</button>
+								<button formaction='http://18.194.61.123:8000/results_of_checking/' value='set_as_done{{order.number}}' name='result_of_checking'>Approve</button>
+								<button formaction='http://18.194.61.123:8000/results_of_checking/' value='return_to_writer{{order.number}}' name='result_of_checking'>Return for revision</button>
 							</form>
 						</div>
 
@@ -758,7 +758,7 @@
 							<p id='messages_par' >Messages:</p>
 							<div class='messages_container'>
 								<div id='comment_form_container'>
-									<form id='comment_form' method="post" action='http://18.195.44.123:8000/create_message/'>
+									<form id='comment_form' method="post" action='http://18.194.61.123:8000/create_message/'>
 									{% csrf_token %}
 										<input type='hidden' name='order_num' value='{{order.number}}'>
 										<textarea id='comment_place'  name='comment' rows="20" cols="63" palceholder='Tap your comment here...'></textarea>
@@ -781,7 +781,7 @@
 
 							<div class='files_container'>
 								<div id='add_order_file_container'>
-									<form id='send_order' enctype="multipart/form-data" method="post" action='http://18.195.44.123:8000/add_file_to_order/'>
+									<form id='send_order' enctype="multipart/form-data" method="post" action='http://18.194.61.123:8000/add_file_to_order/'>
 									{%csrf_token%}
 										<input type='hidden' name='order_num' value='{{order.number}}'>
 										<input type="file" name="order_file">

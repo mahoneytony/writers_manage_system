@@ -139,7 +139,7 @@ def model_creating(request):
 								)
 			model.save()
 
-			return HttpResponseRedirect('http://18.195.44.123:8000/')
+			return HttpResponseRedirect('http://18.194.61.123:8000/')
 		else:
 			return HttpResponse(form.errors)
 
@@ -193,7 +193,7 @@ def register(request):
 	else:
 		user_form = UserForm()
 		profile_form = UserProfileForm()
-	return HttpResponseRedirect('http://18.195.44.123:8000/personal/')
+	return HttpResponseRedirect('http://18.194.61.123:8000/personal/')
 '''
 
 def user_login(request):
@@ -211,7 +211,7 @@ def user_login(request):
 				elif user.userprofile.role == 'controller':
 					return HttpResponseRedirect('/controller_cabinet/')
 				elif user.userprofile.role == 'admin':
-					return HttpResponseRedirect('http://18.195.44.123:8000/')
+					return HttpResponseRedirect('http://18.194.61.123:8000/')
 			else:
 				return HttpResponse('this account is disabled')
 		else:
@@ -220,7 +220,7 @@ def user_login(request):
 @login_required
 def user_logout(request):
 	logout(request)
-	return HttpResponseRedirect('http://18.195.44.123:8000/')
+	return HttpResponseRedirect('http://18.194.61.123:8000/')
 
 def register(request):
 	if request.method == 'GET':
@@ -292,7 +292,7 @@ def results_of_checking(request):
 		order = Order_model.objects.get(number=order_number)
 		order.status = 'done'
 		order.save()
-		return HttpResponseRedirect('http://18.195.44.123:8000/controller_cabinet/')
+		return HttpResponseRedirect('http://18.194.61.123:8000/controller_cabinet/')
 	elif result.startswith('return_to_writer'):
 		order_number = result[16:]
 		order = Order_model.objects.get(number=order_number)
@@ -331,7 +331,7 @@ def apply_order(request):
 		tender.save()
 		tender.writers.add(user_model)
 		tender.save()
-		return HttpResponseRedirect('http://18.195.44.123:8000/personal_cabinet/')
+		return HttpResponseRedirect('http://18.194.61.123:8000/personal_cabinet/')
 
 def to_apply_list(request):
 	tenders = Tender.objects.all()
@@ -373,7 +373,7 @@ def return_from_precheck(request):
 		model.save()
 		order.status = 'in progress'
 		order.save()
-		return HttpResponseRedirect('http://18.195.44.123:8000/available_orders')
+		return HttpResponseRedirect('http://18.194.61.123:8000/available_orders')
 	else:
 		return HttpResponse(comment_form.errors)
 '''
@@ -398,7 +398,7 @@ def create_message(request):
 			create_date = datetime.datetime.now()
 			)
 		model.save()
-		return HttpResponseRedirect('http://18.195.44.123:8000/'+str(request.POST['order_num']))
+		return HttpResponseRedirect('http://18.194.61.123:8000/'+str(request.POST['order_num']))
 	else:
 		return HttpResponse(comment_form.errors)
 
@@ -415,7 +415,7 @@ def add_file_to_order(request):
 			create_date = datetime.datetime.now()
 			)
 		order_file.save()
-		return HttpResponseRedirect('http://18.195.44.123:8000/'+str(request.POST['order_num']))
+		return HttpResponseRedirect('http://18.194.61.123:8000/'+str(request.POST['order_num']))
 	else:
 		return HttpResponse(file_form.errors)
 
@@ -437,7 +437,7 @@ def upload_final_order_file(request):
 			final_file_model.save()
 			order.status = 'on checking'
 			order.save()
-			return HttpResponseRedirect('http://18.195.44.123:8000/personal_cabinet')
+			return HttpResponseRedirect('http://18.194.61.123:8000/personal_cabinet')
 		else:
 			return HttpResponse(form.errors)
 	elif order.status == 'returned for revision':
@@ -456,7 +456,7 @@ def upload_final_order_file(request):
 			final_file_model.save()
 			order.status = 'on checking with controller'
 			order.save()
-			return HttpResponseRedirect('http://18.195.44.123:8000/personal_cabinet')
+			return HttpResponseRedirect('http://18.194.61.123:8000/personal_cabinet')
 
 	elif order.status == 'on checking' or order.status == 'on checking with controller':
 		prev_final_file = order.filemodel_set.get(is_final=True)
@@ -472,10 +472,10 @@ def upload_final_order_file(request):
 				is_final = True
 				)
 			final_file_model.save()
-			return HttpResponseRedirect('http://18.195.44.123:8000/personal_cabinet')
+			return HttpResponseRedirect('http://18.194.61.123:8000/personal_cabinet')
 		else:
 			return HttpResponse(form.errors)
-	else: HttpResponseRedirect('http://18.195.44.123:8000/personal_cabinet')
+	else: HttpResponseRedirect('http://18.194.61.123:8000/personal_cabinet')
 
 
 
@@ -543,7 +543,7 @@ def take_for_check(request):
 	order.save()
 	order.status='on checking with controller'
 	order.save()
-	return HttpResponseRedirect('http://18.195.44.123:8000/'+str(request.POST['order_num']))
+	return HttpResponseRedirect('http://18.194.61.123:8000/'+str(request.POST['order_num']))
 
 
 @login_required
@@ -653,9 +653,9 @@ def order_page_a(request, number):
 			pass
 	elif user_role == 'controller':
 		if order.status == 'available':
-			return HttpResponseRedirect('http://18.195.44.123:8000/')
+			return HttpResponseRedirect('http://18.194.61.123:8000/')
 		elif order.status == 'in progress':
-			return HttpResponseRedirect('http://18.195.44.123:8000/')
+			return HttpResponseRedirect('http://18.194.61.123:8000/')
 		elif order.status == 'on checking':
 			writer = order.writer
 			messages_and_files_form = True
@@ -717,4 +717,4 @@ def confirmation(request):
 		order.writer = None
 	order.save()
 	user.save()
-	return HttpResponseRedirect('http://18.195.44.123:8000/personal_cabinet')
+	return HttpResponseRedirect('http://18.194.61.123:8000/personal_cabinet')

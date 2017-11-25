@@ -133,7 +133,7 @@
 		<header>
 			<div id='foooter'>
 				<h1>to apply</h1>
-				<a id='main_link' href="http://18.195.44.123:8000/">MAIN</a>
+				<a id='main_link' href="http://18.194.61.123:8000/">MAIN</a>
 			<div>
 
 		</header>
@@ -148,7 +148,7 @@
 						<p class='order_number'>{{tender.order.number}}</p>
 						<p class='order_subject'>{{tender.order.subject}}</p>
 						<p class='order_topic'>{{tender.order.topic}}</p>
-						<form method='post' action='http://18.195.44.123:8000/set_writer/'>
+						<form method='post' action='http://18.194.61.123:8000/set_writer/'>
 						{% csrf_token %}
 						<select class='writers_select' name='values'>
 						{% for writer in tender.writers_list %}
