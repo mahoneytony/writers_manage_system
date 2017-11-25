@@ -54,7 +54,7 @@ class Order_model(models.Model):
 		return self.number
 
 	def get_absolut_url(self):
-		return 'http://127.0.0.1:8000/' + self.number
+		return 'http://18.195.44.123:8000/' + self.number
 
 	class Meta:
 		verbose_name = 'Order'
